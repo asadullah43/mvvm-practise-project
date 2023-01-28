@@ -12,7 +12,7 @@ class Routes {
 
       case RoutesName.login:
         return MaterialPageRoute(
-            builder: (BuildContext context) => LoginScreen());
+            builder: (BuildContext context) => const LoginScreen());
 
       default:
         return MaterialPageRoute(builder: (_) {
