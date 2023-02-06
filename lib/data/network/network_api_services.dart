@@ -15,7 +15,7 @@ class NetworkApiServices extends BaseApiServices {
           await http.get(Uri.parse(url)).timeout(const Duration(seconds: 10));
       responseJson = returnRespone(response);
     } on SocketException {
-      throw FetchDataException('No interner connection');
+      throw FetchDataException('No internet connection');
     }
     return responseJson;
   }
@@ -28,7 +28,7 @@ class NetworkApiServices extends BaseApiServices {
           .timeout(const Duration(seconds: 10));
       responseJson = returnRespone(response);
     } on SocketException {
-      throw FetchDataException('No interner connection');
+      throw FetchDataException('No internet connection');
     }
     return responseJson;
   }
@@ -38,6 +38,8 @@ class NetworkApiServices extends BaseApiServices {
       case 200:
         dynamic responseJson = jsonDecode(response.body);
         return responseJson;
+      case 400:
+        throw BadRequestException(response.body.toString());
       case 404:
         throw BadRequestException(response.body.toString());
       default:
