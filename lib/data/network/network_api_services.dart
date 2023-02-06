@@ -3,7 +3,7 @@ import 'dart:io';
 
 import 'package:http/http.dart';
 import 'package:mvvm_practise/data/app_exception.dart';
-import 'package:mvvm_practise/data/network/baseApiServices.dart';
+import 'package:mvvm_practise/data/network/base_api_services.dart';
 import 'package:http/http.dart' as http;
 
 class NetworkApiServices extends BaseApiServices {
