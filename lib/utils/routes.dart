@@ -3,10 +3,14 @@ import 'package:mvvm_practise/utils/routes_name.dart';
 import 'package:mvvm_practise/view/home_screen.dart';
 import 'package:mvvm_practise/view/login_screen.dart';
 import 'package:mvvm_practise/view/signup_screen.dart';
+import 'package:mvvm_practise/view/splash_screen.dart';
 
 class Routes {
   static Route<dynamic> genrateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case RoutesName.splash:
+        return MaterialPageRoute(
+            builder: (BuildContext context) => const SplashScreen());
       case RoutesName.home:
         return MaterialPageRoute(
             builder: (BuildContext context) => const HomeScreen());
