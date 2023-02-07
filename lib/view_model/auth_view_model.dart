@@ -3,6 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:mvvm_practise/repository/auth_repository.dart';
 import 'package:mvvm_practise/utils/routes_name.dart';
 import 'package:mvvm_practise/utils/utils.dart';
+import 'package:mvvm_practise/view_model/user_view_model.dart';
+import 'package:provider/provider.dart';
+
+import '../model/user_model.dart';
 
 class AuthViewModel with ChangeNotifier {
   final _myRepo = AuthRepository();
@@ -21,11 +25,14 @@ class AuthViewModel with ChangeNotifier {
   }
 
   Future<void> loginApi(dynamic data, BuildContext context) async {
+    final userPrefrence = Provider.of<UserViewModel>(context, listen: false);
     setLoading(true);
     _myRepo
         .loginApi(data)
         .then((value) => {
               setLoading(false),
+              userPrefrence
+                  .saveUser(UserModel(token: value['token'].toString())),
               flushBarErrorMessage("LoginSuccessfully", context),
               Navigator.pushNamed(context, RoutesName.home),
             })

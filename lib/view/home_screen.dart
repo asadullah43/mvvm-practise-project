@@ -15,18 +15,18 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final userPrefrence = Provider.of<UserViewModel>(context);
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            InkWell(
-                onTap: () {
-                  userPrefrence.remove().then((value) {
-                    Navigator.pushNamed(context, RoutesName.login);
-                  });
-                },
-                child: const Text("Logout"))
-          ],
-        ),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        actions: [
+          InkWell(
+              onTap: () {
+                userPrefrence.remove().then((value) {
+                  Navigator.pushNamed(context, RoutesName.login);
+                });
+              },
+              child: const Center(child: Text("Logout"))),
+          const SizedBox(width: 20),
+        ],
       ),
     );
   }
